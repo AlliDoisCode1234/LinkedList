@@ -1,5 +1,7 @@
 // // Time Complexity:
 // // O(1)
+// // when not accessing the first element, time complexity changes to
+// // O(n)
 
 class LinkedList {
     constructor() {
@@ -7,11 +9,22 @@ class LinkedList {
       this.length = 0
     }
   
+    // Insert new element at the head node
+    //
+
     insertAtHead(data) {
+      // create new node, create value store in data
+      // the next value after this element is our current start of our list
+      // replace the start of the list with the new node
+      // now the reference to the beginning to the beginning of our list is new node
+      // now our old first node is now our second node
+      // adding node adds a length by number of nodes added
       const newNode = new LinkedListNode(data, this.head)
       this.head = newNode
       this.length++
     }
+
+    // 
   
     getByIndex(index) {
       if (index < 0 || index >= this.length) return null
@@ -23,10 +36,15 @@ class LinkedList {
       return current
     }
   
+    //
+
+
     removeHead() {
       this.head = this.head.next
       this.length--
     }
+
+    //
   
     insertAtIndex(index, value) {
       if (index === 0) return this.insertAtHead(value)
@@ -57,7 +75,7 @@ class LinkedList {
       }
       console.log(`${output}null`)
     }
-  }
+}
   
   class LinkedListNode {
     constructor(value, next) {
